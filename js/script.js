@@ -39,8 +39,10 @@ const renderCountries = (countries) => {
         <article  class="country ${ISO}">
             <img id="${ISO}" class="countryImage" src=${flags} alt="${name}">
             <h2 class="countryName">${name}</h2>
-            <div class="overlay">
-            <?xml version="1.0" ?><svg id="eye" class="${ISO}" enable-background="new 0 0 32 32" id="Editable-line" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="  M16,7C9.934,7,4.798,10.776,3,16c1.798,5.224,6.934,9,13,9s11.202-3.776,13-9C27.202,10.776,22.066,7,16,7z" fill="none" id="XMLID_10_" stroke="#ffff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/><circle cx="16" cy="16" fill="none" id="XMLID_12_" r="5" stroke="#ffff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/></svg></div>
+            <div  class="overlay">
+            
+            <img id="eye" class="${ISO}"  src="./img/3844476_eye_see_show_view_watch_icon.png" alt="eye-icon">
+            </div>
         </article>`)
     }).join('')
     
@@ -72,7 +74,7 @@ const close = (e) =>{
    
 }
 const countryDetails = (event) =>{
-    let element = ''
+    console.log(event.target);
     const countrySelected = event.target.classList.value
     
     const countryFiltered = countriesToRender.filter((country) => {
@@ -82,10 +84,7 @@ const countryDetails = (event) =>{
     if (countryFiltered.length >= 1) {
        
         const {capital,carSide,name,population,flags} = countryFiltered[0]
-        // console.log(capital);
-        // console.log(carSide);
-        // console.log(name);
-        // console.log(population);
+        
         element =` 
                         <article class="country-info--article">
                             <aside>
@@ -94,7 +93,7 @@ const countryDetails = (event) =>{
 
                                 <div>
                                     <h2>${name}</h2>
-                                    <p>Capital:${capital} </p>
+                                    <p>Capital: ${capital} </p>
                                     <p>Poblaci&oacute;n: ${population}</p>
                                     <p>Lado de la carretera: ${carSide}</p>
                                 </div>
@@ -105,7 +104,7 @@ const countryDetails = (event) =>{
         const countryInfoContainer = document.querySelector('.country-info')
         
         
-        console.log(countriesContainer);
+
         countryInfoContainer.innerHTML = element
         countryInfoContainer.classList.add('show')
         const buttonClose = document.getElementById('closeInfo')
